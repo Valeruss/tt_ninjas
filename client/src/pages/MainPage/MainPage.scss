@@ -1,0 +1,50 @@
+.main_page_container {
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+
+    .sph_create {
+        margin-top: 20px;
+        margin-right: 2.5%;
+        float: right;
+
+        
+        &_btn {
+            background-color: rgba(145, 148, 159, 0.07);
+            width: 150px;
+            height: 35px;
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 10px;
+            border-color: #d9422f;
+        }
+
+        &_btn:hover {
+            background-color: rgba(217, 84, 43, 0.1);
+            color: #d9422f;
+            cursor: pointer;
+        }
+    }
+
+    .heroes_list {
+        width: 95%;
+        height: 70%;
+        margin-left: 2.5%;
+        margin-top: 0%;
+        display: flex;
+
+        &_card {
+            width: 19%;
+            height: 80%;
+            margin-right: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    }
+
+    .pagination_container {
+        background-color: black;
+        padding-left: 5%;
+        height: 50px;
+    }
+}

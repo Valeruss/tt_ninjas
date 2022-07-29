@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+$background-color: #222332;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: $background-color;
+    color: white;
+}
+
+.grey_border {
+    border-color: rgba(145,148,159,.2);
+    border-width: 1px;
+    border-style: solid;
+
+    &_bottom {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-color: rgba(145,148,159,.2);
+    }
+}

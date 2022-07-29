@@ -1,0 +1,67 @@
+.sph_page_container {
+    // background-color: black;
+    width: 100vw;
+    height: 90vh;
+
+    .sph_page_btns {
+        display: flex;
+        width: 100%;
+        height: 15%;
+        justify-content: right;
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 40px;
+            background-color: rgba(145, 148, 159, 0.07);
+            width: 150px;
+            height: 35px;
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 10px;
+            border-color: #d9422f;
+
+            &_update {
+                border-color: #b4a21d;
+            }
+
+            &_delete {
+                border-color: red;
+            }
+        }
+
+        .btn:hover {
+            background-color: rgba(217, 84, 43, 0.1);
+            color: #d9422f;
+            cursor: pointer;
+        }
+    }
+
+    .details {
+        // background-color: black;
+        margin-left: 5%;
+        width: 90%;
+
+        &_item {
+            display: flex;
+            margin-top: 15px;
+
+            &_header {
+                font-size: 18px;
+                color: grey;
+            }
+
+            .sph_images {
+                width: 300px;
+                height: 150px;
+                border-radius: 10px;
+                background-color: black;
+            }
+        
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+    }
+}

@@ -1,9 +1,15 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import './App.scss';
+import AppRouter from './components/AppRouter/AppRouter';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <NavBar />
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 

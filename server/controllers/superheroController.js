@@ -3,7 +3,9 @@ const Superhero = require('../models/superhero');
 class SuperheroController {
     getAll = async (request, response) => {
         try {
-            const superheroes = await Superhero.find();
+            const { limit = 5, page = 0 } = request.query;
+            const offset = limit * page;
+            const superheroes = await Superhero.find().limit(limit).skip(offset);
             return response.status(200).json(superheroes);
         } catch (error) {
             return response.json(error.message);

@@ -1,0 +1,47 @@
+.sph_card_container {
+    // background-color: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+    .sph_image {
+        width: 100%;
+        height: 150px;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .sph_nickname {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+    .sph_btn {
+        display: flex;
+        // background-color: white;
+        width: 90%;
+        height: 15%;
+        margin-left: 5%;
+        margin-top: 35%;
+        justify-content: right;
+
+        &_details {
+            // background-color: black;
+            margin-right: 3%;
+            width: 40%;
+            border-radius: 10px;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        &_details:hover {
+            background-color: rgba(217, 84, 43, 0.1);
+            color: #d9422f;
+        }
+    }
+}
