@@ -3,16 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { getAll } from '../../api/superheroesAPI';
 import SuperheroCard from '../../components/SuperheroCard/SuperheroCard';
 import { RouteNames } from '../../router';
+import { useDispatch, useSelector } from 'react-redux';
 import './MainPage.scss';
+import { EventActionCreators } from '../../store/reducers/event/action-creators';
 
 const MainPage = () => {
     const router = useNavigate();
-    const [ superheroes, setSuperheroes ] = useState([]);
+    const dispatch = useDispatch();
+    const superheroes = useSelector((state: any) => state.event.superheroes);
+    // const [ superheroes, setSuperheroes ] = useState([]);
 
     useEffect(() => {
         getAll().then(data => {
-            setSuperheroes(data);
-            console.log(data[0])
+            // setSuperheroes(data);
+            dispatch(EventActionCreators.setSuperheroes(data));
         });
     }, []);
 
@@ -22,7 +26,7 @@ const MainPage = () => {
                 <div className='sph_create_btn grey_border'>+ Create</div>
             </div>
             <div className='heroes_list'>
-                {superheroes?.map((superhero: any, index) =>
+                {superheroes?.map((superhero: any, index: any) =>
                     <div className='heroes_list_card grey_border' key={index}>
                         <SuperheroCard superhero={superhero} />
                     </div>

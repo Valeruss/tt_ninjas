@@ -5,7 +5,7 @@ import './SuperheroCard.scss';
 
 const SuperheroCard = ({ superhero }: any) => {
     const router = useNavigate();
-    const imageURL = `assets/superman.jpg`;
+    const imageURL = `assets/${superhero.images[0]}`;
 
     return (
         <div 

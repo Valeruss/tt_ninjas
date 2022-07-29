@@ -1,8 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import './SuperheroPage.scss';
 
 const SuperheroPage = () => {
     const imageURL = `assets/superman.jpg`;
+    const { id } = useParams();
+
+    console.log(id)
 
     return (
         <div className='sph_page_container'>
