@@ -1,9 +1,10 @@
 .sph_card_container {
-    // background-color: black;
+    background-color: #282939;
     width: 100%;
     height: 100%;
     border-radius: 10px;
-
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+    
     .sph_image {
         width: 100%;
         height: 150px;
@@ -37,6 +38,7 @@
             border-radius: 10px;
             text-align: center;
             padding-top: 15px;
+            box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
         }
 
         &_details:hover {

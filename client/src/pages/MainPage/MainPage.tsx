@@ -1,40 +1,68 @@
+import _ from 'lodash';
+import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAll } from '../../api/superheroesAPI';
 import SuperheroCard from '../../components/SuperheroCard/SuperheroCard';
 import { RouteNames } from '../../router';
 import { useDispatch, useSelector } from 'react-redux';
-import './MainPage.scss';
 import { EventActionCreators } from '../../store/reducers/event/action-creators';
+import './MainPage.scss';
+import CreateModal from '../../components/CreateModal/CreateModal';
 
 const MainPage = () => {
     const router = useNavigate();
     const dispatch = useDispatch();
     const superheroes = useSelector((state: any) => state.event.superheroes);
-    // const [ superheroes, setSuperheroes ] = useState([]);
+    const [ selectedPage, setSelectedPage ] = useState<number>(1);
+    const pages = [1, 2, 3, 4, 5];
 
-    useEffect(() => {
-        getAll().then(data => {
-            // setSuperheroes(data);
+    const getSuperheroes = async (page: number) => {
+        getAll(5, page).then(data => {
             dispatch(EventActionCreators.setSuperheroes(data));
         });
+    }
+
+    useEffect(() => {
+        getSuperheroes(0);
     }, []);
+
+    useEffect(() => {
+        getSuperheroes(selectedPage - 1);
+    }, [selectedPage]);
 
     return (
         <div className='main_page_container'>
             <div className='sph_create'>
-                <div className='sph_create_btn grey_border'>+ Create</div>
+                <CreateModal />
             </div>
             <div className='heroes_list'>
-                {superheroes?.map((superhero: any, index: any) =>
-                    <div className='heroes_list_card grey_border' key={index}>
-                        <SuperheroCard superhero={superhero} />
-                    </div>
-                )}
+                {superheroes.length === 0 ?
+                    <div>Page is empty</div>
+                    :
+                    superheroes?.map((superhero: any, index: any) =>
+                        <div className='heroes_list_card' key={index}>
+                            <SuperheroCard superhero={superhero} />
+                        </div>
+                    )
+                }
             </div>
             <div className='pagination_container'>
-                <div className='pagination-list'>
-                    asd
+                <div className='pagination_list'>
+                    {pages.map(page => {
+                        const selectedBorder = classNames({
+                            'selected-page': selectedPage === page,
+                        });
+                        return (
+                            <div
+                                key={page}
+                                className={`pagination_list_item grey_border ${selectedBorder}`}
+                                onClick={() => setSelectedPage(page)}
+                            >
+                                {page}
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>

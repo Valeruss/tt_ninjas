@@ -19,7 +19,8 @@
             padding-top: 10px;
             border-radius: 10px;
             border-color: #d9422f;
-
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+            
             &_update {
                 border-color: #b4a21d;
             }
@@ -33,6 +34,7 @@
             background-color: rgba(217, 84, 43, 0.1);
             color: #d9422f;
             cursor: pointer;
+            box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
         }
     }
 
@@ -51,10 +53,19 @@
             }
 
             .sph_images {
-                width: 300px;
+                width: 95%;
                 height: 150px;
                 border-radius: 10px;
-                background-color: black;
+                // background-color: black;
+                display: flex;
+
+                &_item {
+                    // background-color: grey;
+                    margin-right: 10px;
+                    width: 200px;
+
+                    
+                }
             }
         
             img {

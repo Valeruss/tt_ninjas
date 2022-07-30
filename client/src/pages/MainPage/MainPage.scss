@@ -7,7 +7,6 @@
         margin-top: 20px;
         margin-right: 2.5%;
         float: right;
-
         
         &_btn {
             background-color: rgba(145, 148, 159, 0.07);
@@ -17,12 +16,14 @@
             padding-top: 10px;
             border-radius: 10px;
             border-color: #d9422f;
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
         }
 
         &_btn:hover {
             background-color: rgba(217, 84, 43, 0.1);
             color: #d9422f;
             cursor: pointer;
+            box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
         }
     }
 
@@ -43,8 +44,95 @@
     }
 
     .pagination_container {
-        background-color: black;
         padding-left: 5%;
-        height: 50px;
+        height: 40px;
+        
+        .pagination_list {
+            height: 100%;
+            width: 95%;
+            display: flex;
+
+            &_item {
+                margin-right: 10px;
+                width: 40px;
+                text-align: center;
+                padding-top: 6px;
+                cursor: pointer;
+                background-color: #282939;
+                box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+            }
+
+            &_item:hover {
+                background-color: rgba(217, 84, 43, 0.1);
+                color: #d9422f;
+                box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
+            }
+
+            .selected-page {
+                border-color: #d9422f;
+            }
+        }
     }
+}
+
+
+.Modal {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    right: 200px;
+    bottom: 100px;
+    background-color: papayawhip;
+    border-radius: 10px;
+    padding: 30px;
+    color: black;
+
+    .modal_content {
+        width: 100%;
+        height: 80%;
+
+        &_item {
+            margin-top: 10px;
+
+            input {
+                width: 50%;
+            }
+        }
+    }
+
+    .modal_btns {
+        width: 100%;
+        height: 15%;
+        display: flex;
+        margin-top: 20px;
+        justify-content: right;
+
+        &_btn {
+            background-color: rgba(145, 148, 159);
+            width: 150px;
+            height: 35px;
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 10px;
+            border-color: #d9422f;
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+            margin-right: 2.5%;
+        }
+
+        &_btn:hover {
+            background-color: rgba(217, 84, 43, 0.1);
+            color: #d9422f;
+            cursor: pointer;
+            box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
+        }
+    }
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(5, 5, 0, 0.5);
 }

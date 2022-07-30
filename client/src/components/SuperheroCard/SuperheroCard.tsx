@@ -10,7 +10,6 @@ const SuperheroCard = ({ superhero }: any) => {
     return (
         <div 
             className='sph_card_container' 
-            
         >
             <div className='sph_image'>
                 <img src={imageURL} alt={superhero.nickname}/>

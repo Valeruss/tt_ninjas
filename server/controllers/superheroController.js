@@ -39,7 +39,7 @@ class SuperheroController {
 
     delete = async (request, response) => {
         try {
-            const { _id } = request.body;
+            const { _id } = request.query;
             const superhero = await Superhero.deleteOne({ _id });
 
             if (superhero.deletedCount === 0) throw new Error('Not Found');
