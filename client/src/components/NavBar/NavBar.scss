@@ -1,4 +1,20 @@
 .navbar {
-    height: 50px;
-    // background-color: white;
+    height: 40px;
+    &_menu {
+        margin-left: 50px;
+        width: 150px;
+        height: 100%;
+        text-align: center;
+        cursor: pointer;
+
+        &_item {
+            padding-top: 8px;
+        }
+    }
+
+    &_menu:hover {
+        background-color: rgba(217, 84, 43, 0.1);
+            color: #d9422f;
+            box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.3);
+    }
 }

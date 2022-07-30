@@ -23,10 +23,7 @@ class SuperheroController {
 
     update = async (request, response) => {
         try {
-            const { _id, fieldName, fieldValue } = request.body;
-            const upsertData = {
-                [`${fieldName}`]: fieldValue
-            };
+            const { _id, upsertData } = request.body;
             const superhero = await Superhero.updateOne({ _id }, upsertData);
 
             if (superhero.matchedCount === 0) throw new Error('Not Found');

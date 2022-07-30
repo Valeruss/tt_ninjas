@@ -10,7 +10,12 @@ export const getAll = async (limit: number, page: number) => {
 export const create = async (superhero: object) => {
     const { data } = await $host.post('api/superhero', superhero);
     return data;
-}
+};
+
+export const update = async (_id: any, upsertData: any) => {
+    const { data } = await $host.put('api/superhero', { _id, upsertData });
+    return data;
+};
 
 export const remove = async (_id: any) => {
     const { data } = await $host.delete('api/superhero', { params: {

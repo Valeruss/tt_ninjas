@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../../router';
 import './SuperheroCard.scss';
@@ -8,12 +7,11 @@ const SuperheroCard = ({ superhero }: any) => {
     const imageURL = `assets/${superhero.images[0]}`;
 
     return (
-        <div 
-            className='sph_card_container' 
-        >
+        <div className='sph_card_container'>
             <div className='sph_image'>
                 <img src={imageURL} alt={superhero.nickname}/>
             </div>
+
             <div className='sph_nickname'>{superhero.nickname}</div>
 
             <div className='sph_btn'>

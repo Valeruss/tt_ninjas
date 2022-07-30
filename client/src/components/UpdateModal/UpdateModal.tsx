@@ -1,16 +1,19 @@
 import _ from 'lodash';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import { create } from '../../api/superheroesAPI';
-import './CreateModal.scss';
+import { useNavigate } from 'react-router-dom';
+import { RouteNames } from '../../router';
+import { update } from '../../api/superheroesAPI';
+import './UpdateModal.scss';
 
-const CreateModal = () => {
+const UpdateModal = ({ _id }: any) => {
+    const route = useNavigate();
     const [ modalIsOpen, setIsModalOpen ] = useState(false);
-    const [ nickname, setNickname ] = useState('');
-    const [ real_name, setRealName ] = useState('');
-    const [ origin_description, setOriginDescription ] = useState('');
-    const [ superpowers, setSuperpowers ] = useState('');
-    const [ catch_phrase, setCatchPhrase ] = useState('');
+    const [ nickname, setNickname ] = useState<string>('');
+    const [ real_name, setRealName ] = useState<string>('');
+    const [ origin_description, setOriginDescription ] = useState<string>('');
+    const [ superpowers, setSuperpowers ] = useState<string>('');
+    const [ catch_phrase, setCatchPhrase ] = useState<string>('');
     const [ images, setImages ] = useState<string[]>([]);
 
     const openModal = () => {
@@ -21,20 +24,29 @@ const CreateModal = () => {
         setIsModalOpen(false);
     };
 
-    const createSuperhero = () => {
-        if (
-            nickname === '' || 
-            real_name === '' || 
-            origin_description === '' || 
-            superpowers === '' || 
-            catch_phrase === '' 
-        ) 
-            return alert('Fill data');
-
-        const newSuperhero = {
-            nickname, real_name, origin_description, superpowers, catch_phrase, images
+    const updateSuperhero = async () => {
+        interface updSuperhero {
+            nickname: string;
+            real_name: string;
+            origin_description: string;
+            superpowers: string;
+            catch_phrase: string;
+            images: string[];
+        }
+        
+        const updSuperhero = {
+            nickname, real_name, origin_description, superpowers, catch_phrase, images,
         };
-        create(newSuperhero);
+
+        _.map(_.keys(updSuperhero), (objectKey) => {
+            if (
+                updSuperhero[objectKey as keyof updSuperhero] === '' ||
+                updSuperhero[objectKey as keyof updSuperhero].length === 0
+            )
+                delete updSuperhero[objectKey as keyof updSuperhero];
+        });
+        
+        await update(_id, updSuperhero);
 
         setNickname('');
         setRealName('');
@@ -43,11 +55,13 @@ const CreateModal = () => {
         setCatchPhrase('');
         setImages([]);
         closeModal();
+        route(RouteNames.MAIN);
+        alert('Superhero updated');
     };
 
     return (
         <div>
-            <div className='sph_create_btn grey_border' onClick={openModal}>+ Create</div>
+            <div className='btn btn_update grey_border' onClick={openModal}>Update</div>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -82,7 +96,7 @@ const CreateModal = () => {
                     </div>
                 </div>
                 <div className='modal_btns'>
-                    <div className='modal_btns_btn' onClick={createSuperhero}>Create</div>
+                    <div className='modal_btns_btn' onClick={updateSuperhero}>Update</div>
                     <div className='modal_btns_btn' onClick={closeModal}>Cancel</div>
                 </div>
             </Modal>
@@ -90,4 +104,4 @@ const CreateModal = () => {
     );
 };
 
-export default CreateModal;
+export default UpdateModal;

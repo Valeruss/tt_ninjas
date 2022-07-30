@@ -1,5 +1,4 @@
 .sph_page_container {
-    // background-color: black;
     width: 100vw;
     height: 90vh;
 
@@ -39,7 +38,6 @@
     }
 
     .details {
-        // background-color: black;
         margin-left: 5%;
         width: 90%;
 
@@ -56,15 +54,11 @@
                 width: 95%;
                 height: 150px;
                 border-radius: 10px;
-                // background-color: black;
                 display: flex;
 
                 &_item {
-                    // background-color: grey;
                     margin-right: 10px;
                     width: 200px;
-
-                    
                 }
             }
         

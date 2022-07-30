@@ -1,17 +1,13 @@
-import _ from 'lodash';
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { getAll } from '../../api/superheroesAPI';
 import SuperheroCard from '../../components/SuperheroCard/SuperheroCard';
-import { RouteNames } from '../../router';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventActionCreators } from '../../store/reducers/event/action-creators';
-import './MainPage.scss';
 import CreateModal from '../../components/CreateModal/CreateModal';
+import './MainPage.scss';
 
 const MainPage = () => {
-    const router = useNavigate();
     const dispatch = useDispatch();
     const superheroes = useSelector((state: any) => state.event.superheroes);
     const [ selectedPage, setSelectedPage ] = useState<number>(1);

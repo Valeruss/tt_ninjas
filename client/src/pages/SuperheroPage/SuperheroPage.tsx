@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { remove } from '../../api/superheroesAPI';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../../router';
+import UpdateModal from '../../components/UpdateModal/UpdateModal';
 import './SuperheroPage.scss';
 
 const SuperheroPage = () => {
@@ -18,17 +18,19 @@ const SuperheroPage = () => {
         remove(id);
         alert(`${superhero.nickname} deleted !`)
         router(RouteNames.MAIN)
-    }
+    };
 
     return (
         <div className='sph_page_container'>
+
             <div className='sph_page_btns'>
-                <div className='btn btn_update grey_border'>Update</div>
+                <UpdateModal _id={id}/>
                 <div 
                     className='btn btn_delete grey_border'
                     onClick={() => removeSuperhero()}
                 >- Delete</div>
             </div>
+
             <div className='details'>
                 <div className='details_item'>
                     <div className='details_item_header grey_border_bottom'>Nickname:</div>
@@ -36,7 +38,7 @@ const SuperheroPage = () => {
                 </div>
                 <div className='details_item'>
                     <div className='details_item_header grey_border_bottom'>Real name:</div>
-                    <div className='details_item_text'>&nbsp;&nbsp;{superhero.nickname}</div>
+                    <div className='details_item_text'>&nbsp;&nbsp;{superhero.real_name}</div>
                 </div>
                 <div className='details_item'>
                     <div className='details_item_header grey_border_bottom'>Origin description:</div>
@@ -52,7 +54,6 @@ const SuperheroPage = () => {
                 </div>
                 <div className='details_item'>
                     <div className='sph_images'>
-                        {/* <img src={imageURL} alt={'asd'}/> */}
                         {superhero.images.map((imageURL: string) =>
                             <div className='sph_images_item' key={imageURL}>
                                 <img src={`assets/spiderman_2.jpg`} alt={imageURL}/>
@@ -61,6 +62,7 @@ const SuperheroPage = () => {
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };
